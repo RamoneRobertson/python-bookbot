@@ -12,13 +12,15 @@ def get_char_counts(text):
 
     return char_counts
 
-def print_report(char_count_dict):
+def sort_on(dict_item):
+    return dict_item["num"]
+
+
+def sort_char_counts(char_count_dict):
     book_data = []
     for key, value in char_count_dict.items():
-        new_dict = {"char": key, "num": value}
-        book_data.append(new_dict)
+        if(key.isalpha()):
+            book_data.append({"char": key, "num": value})
 
-    book_data.sort(key=sort_on)
-
-
-    print(book_data)
+    book_data.sort(reverse=True, key=sort_on)
+    return book_data
